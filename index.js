@@ -53,6 +53,8 @@ function PostgresQuery (text, params, callback) {
       .on('end', function () {
         if (!errored) this.callback(null, this._result)
       })
+  } else {
+    setImmediate(this.read.bind(this))
   }
 }
 
